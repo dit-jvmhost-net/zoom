@@ -8,6 +8,7 @@ jobs:
 
     steps:
       - name: Generate settings.xml
+        uses: whelk-io/maven-settings-xml-action@v20
         with:
           servers: '[{ "id": "dit.jvmhost.net", "username": "wlp", "password": "${wlp}" }]'
         env:
