@@ -17,7 +17,7 @@ jobs:
         with:
           servers: '${{ steps.servers.outputs.JSON }}'
       - name: Show the generated settings.xml file
-        #run: cat ~/.m2/settings.xml
+        run: echo "Hello, World!" # cat ~/.m2/settings.xml
       - name: Check out this repository
         uses: actions/checkout@v3
       - name: Set up JDK 11
