@@ -14,7 +14,7 @@ jobs:
             [{
               "id": "dit.jvmhost.net",
               "username": "wlp",
-              "password": "${{ secrets.WLP }}"
+              "password": "${wlp.password}"
             }]
       - name: Show the generated file
         run: cat ~/.m2/settings.xml
@@ -26,4 +26,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build & Deploy with Maven
-        run: mvn --batch-mode --update-snapshots package tomcat7:redeploy
+        run: mvn --batch-mode --update-snapshots package tomcat7:redeploy -Dwlp.password=$WLP
+        env:
+          WLP: ${{ secrets.WLP }}
