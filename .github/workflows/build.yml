@@ -27,6 +27,6 @@ jobs:
           distribution: 'adopt'
       - name: Build & Deploy with Maven
         run: |
-          mvn -B -U -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -Dwlp=orellana package tomcat7:redeploy
+          mvn -B -U -X -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -Dwlp=orellana package tomcat7:redeploy
         env:
           WLP: ${{ secrets.WLP }}
