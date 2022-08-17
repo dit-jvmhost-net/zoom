@@ -14,7 +14,7 @@ jobs:
             [{
               "id": "dit.jvmhost.net",
               "username": "wlp",
-              "password": "${{ secrets.WLP }}",
+              "password": "${{ secrets.WLP }}"
             }]
       - name: Show the generated settings.xml file
         run: echo "Hello, World!" # cat ~/.m2/settings.xml # echo "Hello, World!" #
