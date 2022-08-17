@@ -8,14 +8,16 @@ jobs:
 
     steps:
       - name: Prepare servers JSON
-        run: echo '::set-output name=JSON::[{"id":"dit.jvmhost.net","username":"wlp","password":"kk"}]'
+        run: echo '::set-output name=JSON::[{"id":"dit.jvmhost.net","username":"wlp","password":"${wlp}"}]'
         id: servers
+        env:
+          wlp: ${{ secrets.WLP }}
       - name: Generate settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
           servers: '${{ steps.servers.outputs.JSON }}'
       - name: Show the generated settings.xml file
-        run: cat ~/.m2/settings.xml
+        #run: cat ~/.m2/settings.xml
       - name: Check out this repository
         uses: actions/checkout@v3
       - name: Set up JDK 11
