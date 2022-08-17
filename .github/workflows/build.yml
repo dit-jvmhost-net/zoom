@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Generate settings.xml
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v4
         with:
           servers: |
             [{
