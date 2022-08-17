@@ -1,19 +1,13 @@
-name: Java CI
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out this repository
-        uses: actions/checkout@v3
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
           java-version: '8.0'
           distribution: 'temurin'
-      - name: Build & Deploy with Maven
-        run: |
+      - run: |
           TRANSFER_LOGGING=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
           mvn -B -U -D$TRANSFER_LOGGING=warn -Dwlp=${{ secrets.WLP }} package tomcat7:redeploy
-        env:
-          WLP: ${{ secrets.WLP }}
