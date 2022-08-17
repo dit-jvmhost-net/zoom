@@ -27,7 +27,7 @@ jobs:
           distribution: 'adopt'
       - name: Build & Deploy with Maven
         run: |
-          set TRANSFER_LOGGING=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
+          TRANSFER_LOGGING=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
           mvn -B -U -D$TRANSFER_LOGGING=warn clean package tomcat7:redeploy
         env:
           WLP: ${{ secrets.WLP }}
