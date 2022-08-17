@@ -26,7 +26,10 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build & Deploy with Maven
-        run: mvn --batch-mode --update-snapshots -Dwlp=$WLP -Dwlp2=$WLP2 package tomcat7:redeploy
+        run: |
+          echo WLP2: $WLP2
+          echo WLP: $WLP
+          mvn --batch-mode --update-snapshots -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -Dwlp=$WLP -Dwlp2=$WLP2 package tomcat7:redeploy
         env:
           WLP: ${{ secrets.WLP }}
           WLP2: 'KK'
