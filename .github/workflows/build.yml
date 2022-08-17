@@ -7,12 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Prepare servers JSON
+        run: echo '::set-output name=JSON::[{"id":"dit.jvmhost.net","username":"wlp","password":"kk"}]'
+        id: servers
       - name: Generate settings.xml
         uses: whelk-io/maven-settings-xml-action@v20
         with:
-          servers: '[{ "id": "dit.jvmhost.net", "username": "wlp", "password": "${wlp}" }]'
-        env:
-          wlp: ${{ secrets.WLP }}
+          servers: '${{ steps.servers.outputs.JSON }}'
       - name: Show the generated settings.xml file
         run: cat ~/.m2/settings.xml
       - name: Check out this repository
