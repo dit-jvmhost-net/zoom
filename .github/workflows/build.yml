@@ -16,8 +16,8 @@ jobs:
               "username": "wlp",
               "password": "${{ secrets.WLP }}"
             }]
-      - name: Show the generated settings.xml file
-        run: cat ~/.m2/settings.xml # echo "Hello, World!" #
+      - name: Show the generated file
+        run: cat ~/.m2/settings.xml
       - name: Check out this repository
         uses: actions/checkout@v3
       - name: Set up JDK 11
