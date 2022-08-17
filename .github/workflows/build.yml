@@ -12,7 +12,7 @@ jobs:
         with:
           servers: |
             [{
-              "id": "dit.jvmhost2.net",
+              "id": "dit.jvmhost.net",
               "username": "wlp",
               "password": "orellana"
             }]
