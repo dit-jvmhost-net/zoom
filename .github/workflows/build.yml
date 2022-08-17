@@ -25,6 +25,6 @@ jobs:
       - name: Build & Deploy with Maven
         run: |
           TRANSFER_LOGGING=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
-          mvn -B -U -D$TRANSFER_LOGGING=warn clean package tomcat7:redeploy
+          mvn -B -U -D$TRANSFER_LOGGING=warn -Dwlp=${{ secrets.WLP }} clean package tomcat7:redeploy
         env:
           WLP: ${{ secrets.WLP }}

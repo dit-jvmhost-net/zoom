@@ -6,7 +6,7 @@
 		<server>
 			<id>dit.jvmhost.net</id>
 			<username>wlp</username>
-			<password>orellana</password>
+			<password>${wlp}</password>
 		</server>
 	</servers>
 </settings>
