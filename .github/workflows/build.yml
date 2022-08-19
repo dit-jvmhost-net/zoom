@@ -14,8 +14,8 @@ jobs:
           step: restore
       - run: |
           TRANSFER_LOGGING=org.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener
-          mvn -B -U -D$TRANSFER_LOGGING=warn -Dwlp=${{ secrets.WLP }} package tomcat7:redeploy
-          # mvn -Dwlp=${{ secrets.WLP }} package tomcat7:redeploy
+          # mvn -U -D$TRANSFER_LOGGING=warn -Dwlp=${{ secrets.WLP }} package tomcat7:redeploy
+          mvn -U -Dwlp=${{ secrets.WLP }} package tomcat7:redeploy
       - name: Save Maven cache
         uses: skjolber/maven-cache-github-action@v1
         with:
